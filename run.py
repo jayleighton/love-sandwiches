@@ -54,7 +54,7 @@ def validate_data(values):
 
 
 def update_sales_worksheet(data):
-    """ 
+    """
     Update sales worksheet, add new row with the list data provided
     """
     print("Updating sales worksheet...\n")
@@ -81,6 +81,16 @@ def calculate_surplus(sales_row):
     return surplus_data
 
 
+def update_surplus_worksheet(surplus_data):
+    """
+    Updates the surplus worksheet, adds a new row with the list provided
+    """
+    print("Updating surplus worksheet...\n")
+    surplus_worksheet = SHEET.worksheet("surplus")
+    surplus_worksheet.append_row(surplus_data)
+    print("Surplus worksheet updated successfully.\n")
+
+
 def main():
     """
     Run all program functions    
@@ -89,7 +99,7 @@ def main():
     sales_data = [int(num) for num in data]
     update_sales_worksheet(sales_data)
     new_surplus_data = calculate_surplus(sales_data)
-    print(new_surplus_data)
+    update_surplus_worksheet(new_surplus_data)
 
 
 main()
